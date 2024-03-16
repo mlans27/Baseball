@@ -72,22 +72,18 @@ def betOrNah(pitcher1, pitcher2, stats1, stats2, game):
             print("No data on " + str(pitcher2))   
 
     if (pitcher1ERA < 3 and pitcher1Record and not pitcher2Record and pitcher2ERA > 3):
-        #print("------------------- BET ON " + team1 + " Game " + game + " -------------------")
         return 1
     elif (pitcher2Record and pitcher2ERA < 3 and not pitcher1Record and pitcher1ERA > 3):
-        #print("------------------- BET ON " + team2 + " Game " + game + " -------------------")
         return 2
     else:
         return 0
 def scrape_pitching_matchups(request):
     for table in tables:
-        #################################
-        # Get team names and remove tags#
-        #################################
+
+        # Get team names and remove tags
         teamNames = table.findChildren("th")
         team1 = str(teamNames[0]).replace("<th>", "")[:-5]
         team2 = str(teamNames[1]).replace("<th>", "")[:-5]
-        #print (team1 + " vs. " + str(team2))
 
         # Read the table into a pandas DataFrame
         df = pd.read_html(str(table))[0]
@@ -98,7 +94,6 @@ def scrape_pitching_matchups(request):
             
             stats1 = str(row[0].split(" •")[-1].split("  ")[-1])
             stats2 = str(row[1].split(" •")[-1].split("  ")[-1])
-            #print( pitcher1 + "(" + stats1 + ") vs. " + pitcher2 + "(" + stats2 + ")")
             bet = betOrNah(pitcher1, pitcher2, stats1, stats2, str(gameNum))
             gameNum =  gameNum + 1
 
@@ -115,42 +110,6 @@ def scrape_pitching_matchups(request):
 
 
     return JsonResponse(data, safe=False)
-    print()
-    
-    ###############################
-    # Get pticher names and stats #
-    ###############################
-    """
-    pitcherNames = table.findChildren(["strong", "span"])
-
-
-    pitcher1 = str(pitcherNames[0]).replace("<strong>", "")[:-9]
-    stats1 = (cleanhtml(str(pitcherNames[1])).split("\n")[1]).strip()
-    
-
-    pitcher2 = str(pitcherNames[2]).replace("<strong>", "")[:-9]
-    stats2 = (cleanhtml(str(pitcherNames[3])).split("\n")[1]).strip()
-
-    pitcher3 = str(pitcherNames[4]).replace("<strong>", "")[:-9]
-    stats3 = (cleanhtml(str(pitcherNames[5])).split("\n")[1]).strip()
-    
-    pitcher4 = str(pitcherNames[6]).replace("<strong>", "")[:-9]
-    stats4 = (cleanhtml(str(pitcherNames[7])).split("\n")[1]).strip()
-
-    pitcher5 = str(pitcherNames[8]).replace("<strong>", "")[:-9]
-    stats5 = (cleanhtml(str(pitcherNames[9])).split("\n")[1]).strip()
-
-    pitcher6 = str(pitcherNames[10]).replace("<strong>", "")[:-9]
-    stats6 = (cleanhtml(str(pitcherNames[11])).split("\n")[1]).strip()
-    
-    print(pitcher1 + " (" + stats1 + ")" + " vs. " + pitcher2 + " (" + stats2 + ")")
-    betOrNah(pitcher1, pitcher2, stats1, stats2, "Game 1")
-    print(pitcher3 + " (" + stats3 + ")" + " vs. " + pitcher4 + " (" + stats4 + ")")
-    betOrNah(pitcher3, pitcher4, stats3, stats4, "Game 2")
-    print(pitcher5 + " (" + stats5 + ")" + " vs. " + pitcher6 + " (" + stats6 + ")")
-    betOrNah(pitcher5, pitcher6, stats5, stats6, "Game 3")
-    print()
-    """
 
 
 
