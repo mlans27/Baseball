@@ -1,0 +1,38 @@
+/* CSS for styling the table */
+.game-container {
+  margin-bottom: 20px;
+}
+
+.pitching-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pitching-table th,
+.pitching-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+  width: 25%;
+}
+
+.pitching-table th {
+  background-color: #f2f2f2;
+}
+
+.pitching-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* CSS for styling the team names */
+.game-header {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f2f2f2;
+  padding: 8px;
+  margin: 0;
+}
+
+.green {
+  background-color: lightgreen;
+}
