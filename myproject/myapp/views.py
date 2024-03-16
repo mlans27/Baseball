@@ -18,6 +18,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 tables = soup.findChildren('table')
 
+data = []
 
 def goodRecord(wins, totalGames):
     """
