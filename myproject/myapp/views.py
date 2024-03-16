@@ -18,16 +18,6 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 tables = soup.findChildren('table')
 
-CLEANR = re.compile('<.*?>') 
-
-data = []
-
-def cleanhtml(raw_html):
-    """
-    Clean HTML tags from raw HTML content.
-    """
-    raw_html = re.sub(CLEANR, '', raw_html)
-    return raw_html
 
 def goodRecord(wins, totalGames):
     """
