@@ -1,0 +1,3 @@
+[submodule "myreactapp"]
+	path = myreactapp
+	url = https://github.com/mlans27/Baseball.git
