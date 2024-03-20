@@ -8,7 +8,7 @@ function PitchingMatchupsTable() {
   useEffect(() => {
     // Fetch pitching matchups data from Django backend
     axios
-      .get("http://0.0.0.0:8000/myapp/pitching_matchups/")
+      .get("http://localhost:8000/myapp/pitching_matchups/")
       .then((response) => {
         setPitchingMatchups(response.data);
       })
