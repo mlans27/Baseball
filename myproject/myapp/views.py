@@ -10,9 +10,14 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 from django.http import JsonResponse
+from logging import getLogger
 
-URL = "https://www.fridaystarters.com/college-baseball-probable-pitcher-week-5/"
+log = getLogger(__name__)
+log.info("Something interesting happened")
+
+URL = "https://www.fridaystarters.com/college-baseball-probable-pitchers-week-7/"
 page = requests.get(URL)
+
 
 soup = BeautifulSoup(page.content, "html.parser")
 
@@ -85,6 +90,7 @@ def scrape_pitching_matchups(request):
             
             stats1 = str(row[0].split(" •")[-1].split("  ")[-1])
             stats2 = str(row[1].split(" •")[-1].split("  ")[-1])
+            print("\n" + str(stats1) + "\n\n")
             bet = betOrNah(pitcher1, pitcher2, stats1, stats2, str(gameNum))
             gameNum =  gameNum + 1
 
