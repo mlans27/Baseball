@@ -1,8 +1,4 @@
 /* CSS for styling the table */
-.game-container {
-  margin-bottom: 20px;
-}
-
 .pitching-table {
   border-collapse: collapse;
   width: 100%;
@@ -13,7 +9,17 @@
   border: 1px solid #dddddd;
   padding: 8px;
   text-align: left;
-  width: 25%;
+}
+
+/* Specify the width for each column */
+.pitching-table th:nth-child(1),
+.pitching-table td:nth-child(4) {
+  width: 10%; /* Adjust the width for the 1st and 4th columns */
+}
+
+.pitching-table th:nth-child(3),
+.pitching-table td:nth-child(6) {
+  width: 30%; /* Adjust the width for the 3rd and 6th columns */
 }
 
 .pitching-table th {

@@ -29,8 +29,10 @@ function PitchingMatchupsTable() {
     processedData[gameKey].pitchers.push({
       pitcher1: matchup.pitcher1,
       stats1: matchup.stats1,
+      recentMatchups1: matchup.recentMatchups1,
       pitcher2: matchup.pitcher2,
       stats2: matchup.stats2,
+      recentMatchups2: matchup.recentMatchups2,
       bet: matchup.bet, // Include the 'bet' variable
     });
   });
@@ -42,8 +44,10 @@ function PitchingMatchupsTable() {
         game.pitchers.push({
           pitcher1: "Pitcher 1",
           stats1: "Stats 1",
+          recentMatchups1: "Recent Matchups 1",
           pitcher2: "Pitcher 2",
           stats2: "Stats 2",
+          recentMatchups2: "Recent Matchups 2",
           bet: 0, // Assume no bet for additional pitchers
         });
       }
@@ -63,8 +67,10 @@ function PitchingMatchupsTable() {
               <tr>
                 <th>Pitcher 1</th>
                 <th>Stats 1</th>
+                <th>Recent Matchups 1</th>
                 <th>Pitcher 2</th>
                 <th>Stats 2</th>
+                <th>Recent Matchups 2</th>
               </tr>
             </thead>
             <tbody>
@@ -74,10 +80,20 @@ function PitchingMatchupsTable() {
                     {pitcher.pitcher1}
                   </td>
                   <td>{pitcher.stats1}</td>
+                  <td>
+                    {pitcher.recentMatchups1.split("\n").map((matchup, idx) => (
+                      <div key={idx}>{matchup}</div>
+                    ))}
+                  </td>
                   <td className={pitcher.bet === 2 ? "green" : ""}>
                     {pitcher.pitcher2}
                   </td>
                   <td>{pitcher.stats2}</td>
+                  <td>
+                    {pitcher.recentMatchups2.split("\n").map((matchup, idx) => (
+                      <div key={idx}>{matchup}</div>
+                    ))}
+                  </td>
                 </tr>
               ))}
             </tbody>
