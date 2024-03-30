@@ -85,6 +85,8 @@ def scrape_pitching_matchups(request):
         df = pd.read_html(str(table))[0]
         gameNum = 1
         for index, row in df.iterrows():
+
+            # Lots of string cleaning cause weird formatting
             pitcher1 = str(row[0].split("  ")[0].split(" •")[0])
             pitcher2 = str(row[1].split("  ")[0].split(" •")[0])
             
@@ -92,23 +94,20 @@ def scrape_pitching_matchups(request):
             stats2 = str(row[1].split(" •")[-1].split("  ")[-1])
             
 
-
+            # Split Season stats from recent matchups
             recentMatchups1 = re.split(r'(?=\d{2}vs\.)', stats1)
             stats1 =recentMatchups1[0]
+            # Clean up recent matchups
             recentMatchups1 = '\n'.join(recentMatchups1[1:])
             recentMatchups1 = re.sub(r'(\d+)vs\. (.+)', r'Rating: \1 vs. \2', recentMatchups1)
 
+            # Split Season stats from recent matchups
             recentMatchups2 = re.split(r'(?=\d{2}vs\.)', stats2)
             stats2 = recentMatchups2[0]
-            
+            # Clean up recent matchups
             recentMatchups2 = '\n'.join(recentMatchups2[1:])
             recentMatchups2 = re.sub(r'(\d+)vs\. (.+)', r'Rating: \1 vs. \2', recentMatchups2)
-            #print(result)
-
-            print("\nmatchup: \n" + str(recentMatchups2) + "\n")
-
-            
-           #print("\n" + str(test[-1]) + "\n\n")
+ 
             bet = betOrNah(pitcher1, pitcher2, stats1, stats2, str(gameNum))
             gameNum =  gameNum + 1
 
