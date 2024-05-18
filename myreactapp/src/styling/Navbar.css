@@ -1,0 +1,21 @@
+/* Navbar.css */
+
+.navbar {
+    background-color: #333; /* Set background color */
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  
+  .navbar a {
+    float: left; /* Float the links to the left */
+    display: block; /* Display them as block elements */
+    color: white; /* Set text color */
+    text-align: center; /* Center text */
+    padding: 14px 16px; /* Add padding */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .navbar a:hover {
+    background-color: #ddd; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+  }
+  

@@ -1,0 +1,59 @@
+/* TeamDropdown.css */
+
+.team-dropdown-form {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center align content horizontally */
+  }
+  
+  .team-dropdown-submit {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+
+  .div-spacing {
+    margin: 5px;
+  }
+  
+  .team-dropdown-submit:hover {
+    background-color: #0056b3;
+  }
+  
+  .team-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .team-info-table th,
+  .team-info-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .team-info-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .team-info-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .team-info-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .green-cell {
+    background-color: rgba(56, 199, 56, 0.7); /* Adjust alpha value as needed */
+    color: white; /* Optionally, set text color to white for better contrast */
+  }
+  
+  .red-cell {
+    background-color: rgba(228, 34, 34, 0.7); /* Adjust alpha value as needed */
+    color: white; /* Optionally, set text color to white for better contrast */
+  }
+  
