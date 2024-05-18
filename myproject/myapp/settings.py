@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-spsp!8o)y6d4*mj)ws2l0@e+y#gbt1(ilndu7#=e-egia(s^ng
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,7 +52,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Add any other allowed origins if needed
+    'http://localhost:3000',
+    'https://animated-fairy-4f3c57.netlify.app',  # Add any other allowed origins if needed
 ]
 
 ROOT_URLCONF = 'myproject.urls'
