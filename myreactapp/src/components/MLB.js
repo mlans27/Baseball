@@ -62,7 +62,7 @@ function TeamDropdown() {
 
     // Send the selected team and location to the backend
     axios
-      .post("http://localhost:8000/myapp/selected-team/", {
+      .post("http://18.219.235.20:8000/myapp/selected-team/", {
         team: selectedTeam,
         location: selectedLocation,
         arm: selectedPitcher,
@@ -109,99 +109,110 @@ function TeamDropdown() {
   };
 
   return (
-    <div className="team-dropdown-container">
-      <form onSubmit={handleSubmit} className="team-dropdown-form">
-        <div className="div-spacing">
-          <label htmlFor="team-select">Select a team:</label>
-          <select
-            id="team-select"
-            value={selectedTeam}
-            onChange={handleTeamChange}
-            className="team-dropdown-select"
-          >
-            <option value="">Select a team</option>
-            {teams.map((team) => (
-              <option key={team.id} value={team.name}>
-                {team.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="div-spacing">
-          <label htmlFor="location-select">Select location:</label>
-          <select
-            id="location-select"
-            value={selectedLocation}
-            onChange={handleLocationChange}
-            className="team-dropdown-select"
-          >
-            <option value="">Select location</option>
-            <option value="Home">Home</option>
-            <option value="Away">Away</option>
-          </select>
-        </div>
-        <div className="div-spacing">
-          <label htmlFor="pitcher-select">Select Pithcer Arm:</label>
-          <select
-            id="pitcher-select"
-            value={selectedPitcher}
-            onChange={handlePitcherChange}
-            className="team-dropdown-select"
-          >
-            <option value="">Righty Or Lefty</option>
-            <option value="Right">Right</option>
-            <option value="Left">Left</option>
-          </select>
-        </div>
-        <button type="submit" className="team-dropdown-submit">
-          Submit
-        </button>
-      </form>
+    <div>
+      <h3>
+        Choose a team, if they are home or away, and if they are facing a right
+        or left handed pitcher
+      </h3>
+      <h3>
+        Then see how their overall average stacks up against todays matchup
+      </h3>
+      <div className="team-dropdown-container">
+        <form onSubmit={handleSubmit} className="team-dropdown-form">
+          <div className="div-spacing">
+            <label htmlFor="team-select">Select a team:</label>
+            <select
+              id="team-select"
+              value={selectedTeam}
+              onChange={handleTeamChange}
+              className="team-dropdown-select"
+            >
+              <option value="">Select a team</option>
+              {teams.map((team) => (
+                <option key={team.id} value={team.name}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="div-spacing">
+            <label htmlFor="location-select">Select location:</label>
+            <select
+              id="location-select"
+              value={selectedLocation}
+              onChange={handleLocationChange}
+              className="team-dropdown-select"
+            >
+              <option value="">Select location</option>
+              <option value="Home">Home</option>
+              <option value="Away">Away</option>
+            </select>
+          </div>
+          <div className="div-spacing">
+            <label htmlFor="pitcher-select">Select Pithcer Arm:</label>
+            <select
+              id="pitcher-select"
+              value={selectedPitcher}
+              onChange={handlePitcherChange}
+              className="team-dropdown-select"
+            >
+              <option value="">Righty Or Lefty</option>
+              <option value="Right">Right</option>
+              <option value="Left">Left</option>
+            </select>
+          </div>
+          <button type="submit" className="team-dropdown-submit">
+            Submit
+          </button>
+        </form>
 
-      <table className="team-info-table">
-        <thead>
-          {tableData.map((rowData, index) => (
-            <tr key={index}>
-              <th>Team</th>
-              <th>Location</th>
-              <th>Team Batting Average</th>
-              <th>Team Batting Average {rowData.location}</th>
-              <th>Team Batting Average vs. {rowData.arm}</th>
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {tableData.map((rowData, index) => (
-            <tr key={index}>
-              <td>{rowData.team}</td>
-              <td>{rowData.location}</td>
-              <td>{rowData.batting_average}</td>
-              <td
-                className={
-                  rowData.batting_average_location > rowData.batting_average
-                    ? "green-cell"
-                    : rowData.batting_average_location < rowData.batting_average
-                    ? "red-cell"
-                    : ""
-                }
-              >
-                {rowData.batting_average_location}
-              </td>
-              <td
-                className={
-                  rowData.batting_average_pitcher > rowData.batting_average
-                    ? "green-cell"
-                    : rowData.batting_average_pitcher < rowData.batting_average
-                    ? "red-cell"
-                    : ""
-                }
-              >
-                {rowData.batting_average_pitcher}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <table className="team-info-table">
+          <thead>
+            {tableData.map((rowData, index) => (
+              <tr key={index}>
+                <th>Team</th>
+                <th>Location</th>
+                <th>Team Batting Average</th>
+                <th>Team Batting Average {rowData.location}</th>
+                <th>Team Batting Average vs. {rowData.arm}</th>
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {tableData.map((rowData, index) => (
+              <tr key={index}>
+                <td>{rowData.team}</td>
+                <td>{rowData.location}</td>
+                <td>{rowData.batting_average}</td>
+                <td
+                  className={
+                    rowData.batting_average_location > rowData.batting_average
+                      ? "green-cell"
+                      : rowData.batting_average_location <
+                        rowData.batting_average
+                      ? "red-cell"
+                      : ""
+                  }
+                >
+                  {rowData.batting_average_location}
+                </td>
+                <td
+                  className={
+                    rowData.batting_average_pitcher > rowData.batting_average
+                      ? "green-cell"
+                      : rowData.batting_average_pitcher <
+                        rowData.batting_average
+                      ? "red-cell"
+                      : ""
+                  }
+                >
+                  {rowData.batting_average_pitcher}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -56,4 +56,8 @@
     background-color: rgba(228, 34, 34, 0.7); /* Adjust alpha value as needed */
     color: white; /* Optionally, set text color to white for better contrast */
   }
+
+  h3 {
+    text-align: center;
+  }
   
